@@ -1,0 +1,95 @@
+{
+  "enable_netease": {
+    "description": "解析网易云音乐分享卡片",
+    "type": "bool",
+    "default": true
+  },
+  "enable_qqmusic": {
+    "description": "解析QQ音乐分享卡片",
+    "type": "bool",
+    "default": true,
+    "hint": "读取卡片中的歌名、歌手/描述、链接与封面地址，不下载歌曲或读取歌词。"
+  },
+  "enable_bilibili": {
+    "description": "解析B站普通分享与QQ小程序卡片",
+    "type": "bool",
+    "default": true
+  },
+  "enable_heybox": {
+    "description": "解析小黑盒分享卡片",
+    "type": "bool",
+    "default": true,
+    "hint": "读取卡片中的标题、描述、链接和封面地址，不抓取帖子正文。"
+  },
+  "enable_generic_json": {
+    "description": "将其他JSON消息的字段转换为普通文字",
+    "type": "bool",
+    "default": true,
+    "hint": "已知平台保留专用摘要，其他JSON默认提取主要信息。隐藏token、cookie等敏感字段，不访问网页。关闭此项仍可读取已开启的四类平台卡片。"
+  },
+  "generic_json_extract_only": {
+    "description": "通用JSON仅提取主要信息",
+    "type": "bool",
+    "default": true,
+    "hint": "本地筛选标题、作者、描述、正文节选、来源和分享链接，跳过配置、时间戳、封面地址等。关闭后恢复旧版字段展开，不额外调用模型。"
+  },
+  "generic_json_max_chars": {
+    "description": "每个通用JSON的字段文字长度上限",
+    "type": "int",
+    "default": 3000,
+    "hint": "500–12000字符；适用于筛选后的字段文字或完整展开。主要信息模式还按字段限制长度，不一定用满该上限。"
+  },
+  "generic_json_max_depth": {
+    "description": "通用JSON展开的最大层级",
+    "type": "int",
+    "default": 6,
+    "hint": "1–10层；最多遍历200个节点，避免大量嵌套数据占满上下文。"
+  },
+  "enable_recent_context": {
+    "description": "提到刚才的卡片、歌曲、视频或帖子时补充短期缓存",
+    "type": "bool",
+    "default": true
+  },
+  "cache_ttl_seconds": {
+    "description": "卡片缓存时间（秒）",
+    "type": "int",
+    "default": 300,
+    "hint": "30–3600秒；插件重载或AstrBot重启后缓存清空。"
+  },
+  "short_followup_window_seconds": {
+    "description": "“识别一下”“这个”等简短追问关联卡片的时间窗口（秒）",
+    "type": "int",
+    "default": 60,
+    "hint": "1秒至缓存时间；期间出现新图片、音频等附件时，不把简短追问关联到更早的卡片。明确提到歌曲、视频或卡片仍使用完整缓存时间。"
+  },
+  "cache_messages_per_session": {
+    "description": "每个群聊或私聊保留的卡片消息数",
+    "type": "int",
+    "default": 10,
+    "hint": "1–50；不同机器人账号、平台实例和聊天隔离。"
+  },
+  "cache_max_sessions": {
+    "description": "最多缓存的聊天数",
+    "type": "int",
+    "default": 200,
+    "hint": "1–1000；超过上限时淘汰最早写入的聊天。"
+  },
+  "max_cards_per_message": {
+    "description": "每条消息最多解析的卡片数",
+    "type": "int",
+    "default": 3,
+    "hint": "1–10。"
+  },
+  "max_recent_candidates": {
+    "description": "指代不明确时最多展示给模型的候选卡片数",
+    "type": "int",
+    "default": 3,
+    "hint": "1–10；多张卡片保留发送者和消息ID，由模型确认指代。"
+  },
+  "fetch_missing_reply": {
+    "description": "引用内容缺失且缓存未命中时，通过NapCat获取原消息",
+    "type": "bool",
+    "default": true,
+    "hint": "仅获取被引用的消息，单次最多等待3秒；不请求分享网页。"
+  }
+}

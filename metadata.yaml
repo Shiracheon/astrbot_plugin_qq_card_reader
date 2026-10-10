@@ -1,0 +1,9 @@
+name: astrbot_plugin_qq_card_reader
+display_name: QQ卡片阅读器
+desc: 提取QQ分享卡片及JSON消息中的标题、作者、描述和链接等主要信息，支持当前消息、引用消息与短期缓存；内置网易云、QQ音乐、B站与小黑盒专用解析。
+version: v0.5.0
+author: Shiracheon
+support_platforms:
+  - aiocqhttp
+astrbot_version: ">=4.28.2,<5.0.0"
+repo: https://github.com/Shiracheon/astrbot_plugin_qq_card_reader
